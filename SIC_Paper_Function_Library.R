@@ -3103,7 +3103,7 @@ new_criterion_C_matrix <- function(C_mat, df_curve){
 # Applied by summing single c criterion for upper triangular elements
 
 new_criterion_X_matrix <- function(X, df_curve){
-  colnames(df_curve) <- c("c", "psi_int")
+  #colnames(df_curve) <- c("c", "psi_int")
   n= nrow(X)
   p =ncol(X)
   X_cs = as.data.frame(lapply(as.data.frame(X), cent_scale))
@@ -3125,7 +3125,7 @@ evaluate_designs_new_approach <- function( design_list, df_curve, c_opt){
     design <- design_list[[design_name]]
     
     output_a <- new_criterion_X_matrix(design,df_curve)
-    output_b <- eval_exact_design_with_CS(design,c_opt)
+    output_b <- eval_exact_design_with_CS(design,c_opt,df_curve)
     
     data.frame(
       design = design_name,
